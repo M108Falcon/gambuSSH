@@ -1,5 +1,8 @@
 # ignore python venv
 env/
 
-# ignore config files
+
+# ignore vim config and test files
 .vim
+test*
+
