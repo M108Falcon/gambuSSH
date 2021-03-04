@@ -5,4 +5,3 @@ env/
 # ignore vim config and test files
 .vim
 test*
-
