@@ -48,7 +48,6 @@ def startConneciton():
         thread = threading.Thread(target=handleClient, args=(conn, address))
         thread.start()
         print(f"[ACTIVE CONNECTIONS] {threading.activeCount() - 1}")
-        thread.join()
 
 
 print(f"[STARTING] Server is starting on PORT {PORT}")
