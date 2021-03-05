@@ -1,27 +1,6 @@
 import socket
 import threading
-
-# set Port number
-PORT = 8000
-
-# get local machine address
-SERVER = socket.gethostbyname(socket.gethostname())
-
-# store info in tuple for network socket
-ADDR = (SERVER, PORT)
-
-# format
-FORMAT = 'utf-8'
-
-# Connection Header of 64bytes
-HEADER = 64
-
-# disconnection message
-DISCONNECT_MESSAGE = "!disconnect"
-
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.bind(ADDR)
-
+import argparse
 
 def handleClient(conn, address):
     print(f"[NEW CONNECTION] {address} connected.")
@@ -50,5 +29,49 @@ def startConneciton():
         print(f"[ACTIVE CONNECTIONS] {threading.activeCount() - 1}")
 
 
-print(f"[STARTING] Server is starting on PORT {PORT}")
-startConneciton()
+if __name__ == "__main__":
+
+    """
+    Initializing commandline arguments
+    These arguments are purely optional and script can be run without them
+    To see how to use them, type
+    python3 server.py -h
+    """
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", "--port", help="specify PORT number", required=False, default = "")
+    parser.add_argument("-m", "--maxconnections", help="specify max no of connections", required=False, default="")
+
+    args = parser.parse_args()
+
+    # set Port number
+    PORT = 8000
+
+    # set max no of connections
+    MAXTHREADS = 100
+
+    if args.port:
+        PORT = int(args.port)
+    if args.maxconnections:
+        MAXTHREADS = int(args.maxconnections)
+
+    # get local machine address
+    SERVER = socket.gethostbyname(socket.gethostname())
+
+    # store info in tuple for network socket
+    ADDR = (SERVER, PORT)
+
+    # format
+    FORMAT = 'utf-8'
+
+    # Connection Header of 64bytes
+    HEADER = 64
+
+    # disconnection message
+    DISCONNECT_MESSAGE = "!disconnect"
+
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.bind(ADDR)
+
+    print(f"[STARTING] Server is starting on PORT {PORT} with max {MAXTHREADS} connections allowed")
+    startConneciton()
