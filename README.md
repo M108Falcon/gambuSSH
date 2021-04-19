@@ -21,9 +21,7 @@ Use the following flags alongwith the commandline script to enter your own param
 -h or --help to display help menu
 -f or --file to speicfy location of custom configuration file
 -p or --port to specify port number (default 8000)
--m or --max connections to specify maximum number of connections (default 3000)
--p or --port to specify port number (default 8000)
--m or --max connections to specify maximum number of connections (default 3000)
+-m or --maxconnections to specify maximum number of connections (default 3000)
 -4 to listen on IPv4
 -6 to listen on IPv6
 ```
