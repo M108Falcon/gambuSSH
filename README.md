@@ -1,6 +1,6 @@
 # gambuSSH: Graphical SSH Honeypot
 
-gambuSSH is a commandline as well as graphical application that acts as a tarpit to defend against Dictionary as well as DDoS attacks on SSH Ports.  
+gambuSSH (pronounced g-Ambush) is a commandline as well as graphical application that acts as a tarpit to defend against Dictionary as well as DDoS attacks on SSH Ports.  
 The app acts as a decoy SSH port that traps autmoized scripts for indefinite amount of time, wasting a lot of attacker's time and also slowing down their attacks on other open SSH ports worldwide.
 
 *The app works exclusively on Linux systems for now*
