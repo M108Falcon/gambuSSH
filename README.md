@@ -19,7 +19,7 @@ SSH has no limit on banner length as well as timeout limit for conneciton in it'
 Use the following flags alongwith the commandline script to enter your own parameters.
 ```bash
 -h or --help to display help menu
--f or --file to speicfy location of custom configuration file
+-f or --file to specify location of custom configuration file
 -p or --port to specify port number (default 8000)
 -m or --maxconnections to specify maximum number of connections (default 3000)
 -4 to listen on IPv4
