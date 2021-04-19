@@ -40,8 +40,11 @@ if __name__ == "__main__":
     """
 
     parser = argparse.ArgumentParser()
+    parser.add_argument("-f", "--file" ,help="specify location for custom configuration file", required=False, default="")
     parser.add_argument("-p", "--port", help="specify PORT number", required=False, default = "")
     parser.add_argument("-m", "--maxconnections", help="specify max no of connections", required=False, default="")
+    parser.add_argument("-4",help="Listen on IPv4", required=False, default="")
+    parser.add_argument("-6", help="Listen on IPv6", required=False, default="")
 
     args = parser.parse_args()
 
