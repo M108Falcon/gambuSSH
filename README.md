@@ -1,35 +1,38 @@
 # gambuSSH: Graphical SSH Honeypot
 
-gambuSSH (word play for ambush and g to signify graphical) is a **cli** as well as **GUI** based application.
-The application will work with Systemd for starters and support for other init systems such as sysvinit or runit may get added later.
+gambuSSH is a commandline as well as graphical application that acts as a tarpit to defend against Dictionary as well as DDoS attacks on SSH Ports.  
+The app acts as a decoy SSH port that traps autmoized scripts for indefinite amount of time, wasting a lot of attacker's time and also slowing down their attacks on other open SSH ports worldwide.
 
-## Working Principle:
-gambuSSH serves as a decoy SSH port to prevent SSH bruteforce and DDos attacks by numerous script kiddies that use automated scripts to try crack/crash different servers with default SSH port open worldwide.
-As soon as the connection is established, the application returns random flags in arbitrary amount of time so to keep the tool from disconnecting, hence wasting a lot of their time.
+*The app works exclusively on Linux systems for now*
 
-## Language and Frameworks used:
-- [x] Python for base engine.
-- [x] Gnome GTK for for GUI(Utilising Javascript for GUI alongwith integrations API for C/C++, Python and Rust) as it provides easy Linux Desktop integration.
+## Working Prinicple
+SSH has no limit on banner length as well as timeout limit for conneciton in it's source code. The app utilizes the same principal to trap  attackers and botnets. As soon as the connection is established the script sends a random flag of arbitrary length as a response and keeps the automated script busy.
 
-### Features:
-- [ ] The script/app will use 1 OS Thread as a process.
-- [ ] Support for commandline args for cli application.
-- [ ] Service integration with init system (Systemd here).
-- [ ] Create a log destination and file.
-- [ ] Responive and real-time updatable GUI.
+### Features
+1. Multithreaded applicaiton.
+2. Since we do not need to authenticate the user, need for cryptographic key exchange in traditional SSH is elminated. This keeps the script  pretty lightweight.
+3. Only default system modules that are present in Linux distros are used to enhance security by avoiding extra modules. This also means **commandline script has no additional dependencies.**
+4. Bounded semaphores to control max no of connecitons.
 
 
-### Additional Features:
-- [ ] If possible, a functionality to catch the IP address and send it to Admin's mobile as a text alert after failed attempts.
-- [ ] A compilable app that can be compiled using make/cmake and support simple config file edit rather than change in source code.
+### Usage
+Use the following flags alongwith the commandline script to enter your own parameters.
+```bash
+-h or --help to display help menu
+-f or --file to speicfy location of custom configuration file
+-p or --port to specify port number (default 8000)
+-m or --max connections to specify maximum number of connections (default 3000)
+-p or --port to specify port number (default 8000)
+-m or --max connections to specify maximum number of connections (default 3000)
+-4 to listen on IPv4
+-6 to listen on IPv6
+```
 
-## Algorithm
+#### NOTE: The application is still in early stages of development, thus, you may expect crashes sometimes. We are experiencing difficulties with Linux Policy kits, thus GUI hasn't been added to main branch although CLI app is fully functional.
 
-1. Import OS and networking libs.
-2. Use sysargv utility in the programming language to accept commandline args.
-3. Specify port number and machine's ip address.
-4. Make a listner to listen at specified Port.
-5. If connection establishes, send it to another function that spits out random stmts after certain set period of time unitl connection terminates.
-6. Assign Step 4 and 5 single OS Thread.
 
-*We need to think abt addition of log files as well as GUI integration as we are not fully experienced in making one, but here is the idea presented into simple steps.*
+### Future
+Following features will be added to future updates:
+1. Self contained executable binaries.
+2. Service Integration with System Daemons(Mainly SystemD for start).
+3. Fully working GUI with policy kit implementation.
