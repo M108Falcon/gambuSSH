@@ -1,0 +1,21 @@
+# --------------------------------------------------- #
+#         Welcome to gAmbuSSH sample config           #
+#            Written by: M108Falcon                   #
+# --------------------------------------------------- #
+
+
+# Port number
+Port 2222
+
+# Maximum Connections
+MaxConnections 500
+
+# Banner Length
+Banner 48
+
+# Header Length
+Header 3072
+
+# Enable logging
+# Replace 0 with 1 to disable it
+Logging 1
